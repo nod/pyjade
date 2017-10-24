@@ -32,12 +32,12 @@ def escape(s):
     """
     if hasattr(s, '__html__'):
         return s.__html__()
-    if isinstance(s, six.binary_type):
+    if isinstance(s, six.text_type):
+        pass
+    elif isinstance(s, six.binary_type):
         s = six.text_type(
             unicode(s) if not isinstance(s, unicode) else s,
             'utf8')
-    elif isinstance(s, six.text_type):
-        s = s
     else:
         s = unicode(s)
 
